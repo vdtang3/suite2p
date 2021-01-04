@@ -221,8 +221,8 @@ class ROIDraw(QtGui.QMainWindow):
 
     def check_proc(self, event):
         cproc = QtGui.QMessageBox.question(
-            self, "PROC", 'Would you like to save traces before closing? (if you havent extracted the traces, click Cancel and extract!)', 
-            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No | QtGui.QMessageBox.Cancel 
+            self, "PROC", 'Would you like to save traces before closing? (if you havent extracted the traces, click Cancel and extract!)',
+            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No | QtGui.QMessageBox.Cancel
         )
         if cproc == QtGui.QMessageBox.Yes:
             self.close_GUI()
@@ -288,7 +288,7 @@ class ROIDraw(QtGui.QMainWindow):
                 mimg[self.parent.ops['yrange'][0]:self.parent.ops['yrange'][1],
                     self.parent.ops['xrange'][0]:self.parent.ops['xrange'][1]] = self.parent.ops['meanImg'][self.parent.ops['yrange'][0]:self.parent.ops['yrange'][1],
                                                                                                             self.parent.ops['xrange'][0]:self.parent.ops['xrange'][1]]
-                
+
             elif i == 1:
                 mimg = np.zeros((self.Ly, self.Lx), np.float32)
                 mimg[self.parent.ops['yrange'][0]:self.parent.ops['yrange'][1],
@@ -298,13 +298,13 @@ class ROIDraw(QtGui.QMainWindow):
                 mimg = np.zeros((self.Ly, self.Lx), np.float32)
                 mimg[self.parent.ops['yrange'][0]:self.parent.ops['yrange'][1],
                     self.parent.ops['xrange'][0]:self.parent.ops['xrange'][1]] = self.parent.ops['Vcorr']
-                
+
             else:
                 mimg = np.zeros((self.Ly, self.Lx), np.float32)
                 if 'max_proj' in self.parent.ops:
                     mimg[self.parent.ops['yrange'][0]:self.parent.ops['yrange'][1],
                         self.parent.ops['xrange'][0]:self.parent.ops['xrange'][1]] = self.parent.ops['max_proj']
-                
+
             mimg1 = np.percentile(mimg, 1)
             mimg99 = np.percentile(mimg, 99)
             mimg = (mimg - mimg1) / (mimg99 - mimg1)
